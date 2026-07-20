@@ -246,27 +246,119 @@ document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => observer.observ
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const email = document.getElementById('email').value;
-  const company = document.getElementById('company').value;
-  const message = document.getElementById('message').value;
-  const toEmail = window._contactEmail || 'contact.northbridgesolution@gmail.com';
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    const message = document.getElementById('message').value;
+    const toEmail = window._contactEmail || 'contact.northbridgesolution@gmail.com';
 
-  const mailtoBody = `Name: ${firstName} ${lastName}%0AEmail: ${email}%0ACompany: ${company}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
-  const mailtoLink = `mailto:${toEmail}?subject=New Inquiry from ${firstName} ${lastName}&body=${mailtoBody}`;
+    const mailtoBody = `Name: ${firstName} ${lastName}%0AEmail: ${email}%0ACompany: ${company}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:${toEmail}?subject=New Inquiry from ${firstName} ${lastName}&body=${mailtoBody}`;
 
-  window.open(mailtoLink, '_blank');
+    window.open(mailtoLink, '_blank');
 
-  contactForm.style.display = 'none';
-  formSuccess.style.display = 'flex';
-});
+    contactForm.style.display = 'none';
+    if (formSuccess) formSuccess.style.display = 'flex';
+  });
+}
 
 function resetForm() {
-  contactForm.reset();
-  contactForm.style.display = 'block';
-  formSuccess.style.display = 'none';
+  if (contactForm) {
+    contactForm.reset();
+    contactForm.style.display = 'block';
+  }
+  if (formSuccess) formSuccess.style.display = 'none';
 }
+
+// ========== CHATBOT WIDGET LOGIC ==========
+(function initChatbot() {
+  const trigger = document.getElementById('chatbotTrigger');
+  const box = document.getElementById('chatbotBox');
+  const closeBtn = document.getElementById('chatbotCloseBtn');
+  const form = document.getElementById('chatbotForm');
+  const input = document.getElementById('chatbotInput');
+  const messages = document.getElementById('chatbotMessages');
+
+  if (!trigger || !box) return;
+
+  const iconOpen = trigger.querySelector('.chat-icon-open');
+  const iconClose = trigger.querySelector('.chat-icon-close');
+
+  function toggleChat() {
+    const isHidden = box.style.display === 'none' || box.style.display === '';
+    box.style.display = isHidden ? 'flex' : 'none';
+    if (iconOpen) iconOpen.style.display = isHidden ? 'none' : 'block';
+    if (iconClose) iconClose.style.display = isHidden ? 'block' : 'none';
+  }
+
+  trigger.addEventListener('click', toggleChat);
+  if (closeBtn) closeBtn.addEventListener('click', toggleChat);
+
+  window.handleChipClick = function(topic) {
+    appendUserMsg(topic);
+    respondToTopic(topic);
+  };
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      appendUserMsg(val);
+      input.value = '';
+      respondToTopic(val);
+    });
+  }
+
+  function appendUserMsg(text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg user-msg';
+    div.innerHTML = `<div class="chat-bubble">${esc(text)}</div>`;
+    messages.appendChild(div);
+    scrollToBottom();
+  }
+
+  function appendBotMsg(html) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg bot-msg';
+    div.innerHTML = `<div class="chat-bubble">${html}</div>`;
+    messages.appendChild(div);
+    scrollToBottom();
+  }
+
+  function respondToTopic(query) {
+    const q = query.toLowerCase();
+    let reply = "";
+
+    if (q.includes('web') || q.includes('site') || q.includes('store')) {
+      reply = "We craft custom, high-converting websites & webstores with responsive UI, fast speeds, and SEO! Would you like to schedule a free consultation?";
+    } else if (q.includes('bot') || q.includes('chat') || q.includes('ai')) {
+      reply = "Our AI Chatbots automate customer support 24/7 and capture leads instantly on your website, WhatsApp, & Messenger!";
+    } else if (q.includes('outreach') || q.includes('linkedin') || q.includes('email')) {
+      reply = "Our targeted LinkedIn & Email Outreach campaigns book qualified decision-maker meetings directly into your sales calendar.";
+    } else if (q.includes('whatsapp') || q.includes('contact')) {
+      reply = "You can chat with our team directly on WhatsApp at <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a>!";
+    } else {
+      reply = "Thank you for getting in touch! You can chat with our team on WhatsApp at <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a> or book a consultation below.";
+    }
+
+    setTimeout(() => {
+      appendBotMsg(reply);
+    }, 600);
+  }
+
+  function scrollToBottom() {
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function esc(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+})();
