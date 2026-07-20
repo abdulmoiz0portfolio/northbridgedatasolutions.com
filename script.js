@@ -332,24 +332,36 @@ function resetForm() {
   }
 
   function respondToTopic(query) {
-    const q = query.toLowerCase();
+    const q = query.toLowerCase().trim();
     let reply = "";
 
-    if (q.includes('web') || q.includes('site') || q.includes('store')) {
-      reply = "We craft custom, high-converting websites & webstores with responsive UI, fast speeds, and SEO! Would you like to schedule a free consultation?";
-    } else if (q.includes('bot') || q.includes('chat') || q.includes('ai')) {
-      reply = "Our AI Chatbots automate customer support 24/7 and capture leads instantly on your website, WhatsApp, & Messenger!";
-    } else if (q.includes('outreach') || q.includes('linkedin') || q.includes('email')) {
-      reply = "Our targeted LinkedIn & Email Outreach campaigns book qualified decision-maker meetings directly into your sales calendar.";
-    } else if (q.includes('whatsapp') || q.includes('contact')) {
-      reply = "You can chat with our team directly on WhatsApp at <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a>!";
+    if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('salam') || q.includes('assalam')) {
+      reply = "Hello! Welcome to NorthBridge Digital Solutions. How can we assist you with Web Development, AI Chatbots, Graphics Design, or Marketing today?";
+    } else if (q.includes('price') || q.includes('cost') || q.includes('rate') || q.includes('package') || q.includes('how much') || q.includes('budget')) {
+      reply = "Our pricing depends on your specific project requirements. We offer custom packages tailored to your budget! Chat directly on <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>WhatsApp (+44 7460 001196)</a> for an instant quote.";
+    } else if (q.includes('graphic') || q.includes('design') || q.includes('logo') || q.includes('banner') || q.includes('brand') || q.includes('poster')) {
+      reply = "Our graphic design team creates eye-catching logo designs, visual brand identities, social media creatives, ad banners, and UI assets tailored to elevate your business!";
+    } else if (q.includes('social') || q.includes('instagram') || q.includes('facebook') || q.includes('account') || q.includes('management') || q.includes('post')) {
+      reply = "We provide end-to-end Social Media Management including content calendars, graphic post scheduling, hashtag research, and organic community growth across FB, IG, LinkedIn, & X!";
+    } else if (q.includes('web') || q.includes('site') || q.includes('store') || q.includes('ecommerce') || q.includes('shopify') || q.includes('wordpress')) {
+      reply = "We craft custom, high-converting websites & e-commerce stores (Shopify, WooCommerce, Custom) with responsive UI, fast speeds, and SEO! Development time is typically 3–7 days.";
+    } else if (q.includes('bot') || q.includes('chat') || q.includes('ai') || q.includes('automation')) {
+      reply = "Our 24/7 AI Chatbots & Automation systems engage visitors, answer questions instantly, and capture qualified leads on your Website, WhatsApp, & Messenger!";
+    } else if (q.includes('outreach') || q.includes('linkedin') || q.includes('email') || q.includes('lead')) {
+      reply = "Our targeted LinkedIn & Email Outreach campaigns utilize Sales Navigator and deliverability-optimized cold emails to book qualified decision-maker meetings into your sales calendar.";
+    } else if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('office')) {
+      reply = "Our main office is located at 1 World Trade Center, Suite 8500, New York, NY 10007, USA, and our UK WhatsApp line is <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a>.";
+    } else if (q.includes('time') || q.includes('day') || q.includes('how long') || q.includes('timeline') || q.includes('delivery')) {
+      reply = "Most web development and graphic design projects are completed within 3 to 7 business days, with 24/7 client updates throughout the project!";
+    } else if (q.includes('whatsapp') || q.includes('phone') || q.includes('contact') || q.includes('call') || q.includes('number')) {
+      reply = "You can contact our team 24/7 on WhatsApp at <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a> or email us at <a href='mailto:contact@northbridgedatasolutions.com' style='color:#2563eb;font-weight:700;'>contact@northbridgedatasolutions.com</a>.";
     } else {
-      reply = "Thank you for getting in touch! You can chat with our team on WhatsApp at <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>+44 7460 001196</a> or book a consultation below.";
+      reply = "Thank you for getting in touch! We specialize in Web Development, AI Chatbots, Webstores, Graphics Design, LinkedIn Outreach & Social Media Management. Chat with our team on <a href='https://wa.me/447460001196' target='_blank' style='color:#2563eb;font-weight:700;text-decoration:underline;'>WhatsApp (+44 7460 001196)</a> for immediate help!";
     }
 
     setTimeout(() => {
       appendBotMsg(reply);
-    }, 600);
+    }, 500);
   }
 
   function scrollToBottom() {
