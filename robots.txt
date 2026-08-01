@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+# Allow major AI search and citation crawlers
+User-agent: GPTBot
+Allow: /
+Disallow: /admin.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin.html
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://northbridgedatasolutions.com/sitemap.xml

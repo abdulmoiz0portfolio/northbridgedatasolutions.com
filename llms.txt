@@ -1,0 +1,23 @@
+# NorthBridge Digital & AI Solutions
+
+NorthBridge Digital & AI Solutions is an international digital agency that delivers professional website design, e-commerce development, custom AI chatbot integration, graphic branding, B2B email marketing, and LinkedIn outreach services. Operating globally since 2024, our firm specializes in automation, high-converting pipelines, and 24/7 lead qualification.
+
+## Core Information & Services
+
+- [Homepage](https://northbridgedatasolutions.com/): Our primary landing page presenting services, case metrics, team members, and contact forms.
+- [Chatbots & AI Support](https://northbridgedatasolutions.com/#services): Custom AI chatbots for 24/7 client support and automatic inbound lead qualification on websites, WhatsApp, and messaging apps.
+- [Website & Webstore Development](https://northbridgedatasolutions.com/#services): Highly responsive, SEO-ready custom websites and e-commerce platforms (Shopify, WordPress, WooCommerce) delivered in 3 to 7 days.
+- [B2B LinkedIn & Email Outreach](https://northbridgedatasolutions.com/#services): Profile optimization, Sales Navigator targeting, and outbound campaigns to schedule qualified meetings.
+- [Graphics Designing & Branding](https://northbridgedatasolutions.com/#services): Creative visual brand assets, logos, social media graphics, and UI/UX assets.
+- [Social Accounts & Email Marketing](https://northbridgedatasolutions.com/#services): End-to-end multi-platform social management and deliverability-optimized email drip sequences.
+
+## Contact Information
+
+- **WhatsApp Hotline (UK)**: [+44 7460 001196](https://wa.me/447460001196) (Available 24/7)
+- **Primary Support Email**: contact@northbridgedatasolutions.com
+- **USA Office**: 1 World Trade Center, Suite 8500, New York, NY 10007, USA
+
+## Sitemap & Crawling
+
+- [XML Sitemap](https://northbridgedatasolutions.com/sitemap.xml)
+- Disallowed Routes: `/admin.html` (Blocked in robots.txt)
